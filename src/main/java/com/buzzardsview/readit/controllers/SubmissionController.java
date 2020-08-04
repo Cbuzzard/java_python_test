@@ -25,12 +25,12 @@ public class SubmissionController {
         return repository.save(submission);
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/submissions/{id}")
     Submission one(@PathVariable Integer id) {
         return repository.findById(id).orElseThrow();
     }
 
-    @PutMapping("/employees/{id}")
+    @PutMapping("/submissions/{id}")
     Submission replaceSubmission(@RequestBody Submission newSubmission, @PathVariable Integer id) {
         return repository.findById(id).map(submission -> {
             submission.setName(newSubmission.getName());
@@ -41,7 +41,7 @@ public class SubmissionController {
         });
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/submissions/{id}")
     void deleteSubmission(@PathVariable Integer id) {
         repository.deleteById(id);
     }
